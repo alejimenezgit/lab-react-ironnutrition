@@ -4,19 +4,16 @@ import "./style.css";
 
 class ResultFood extends Component {
 
-    state = {
-        allcalories: 0
-    }
-
-    calcalories = (calories) => {
-        console.log('calories', calories)
-        this.setState({
-            allcalories: this.state.allcalories + calories
-        })
+    calcalories = (newFoodList) => {
+        console.log(newFoodList)
+        if(newFoodList.length > 0){
+            return newFoodList.reduce((accumulator, current) => {return accumulator + (current.calories * current.number)} , 0)
+        } 
+        else 
+            return 0;
     }
 
     render(){
-        console.log('food', this.props.newFoodList)
         const { newFoodList } = this.props;
         return (
             <div className="listFood">
@@ -28,13 +25,12 @@ class ResultFood extends Component {
                         key: index,
                         name: foodToday.name,
                         calories: foodToday.calories,
-                        quantity: foodToday.number,
-                        calcalories: this.calcalories
+                        quantity: foodToday.number
                     }
                    return <TodayFood {...props}/> 
                 })}
 
-                <h4> Total: {this.state.allcalories} cal </h4>
+                <h4> Total: {this.calcalories(newFoodList)} cal </h4>
             </div>
         )
     }

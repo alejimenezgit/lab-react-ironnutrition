@@ -62,7 +62,7 @@ class App extends Component {
 
         <div className="boxFlex">
           <ShowList filter={search} list={this.state.food} addFoodList={this.addFoodList}/>
-          <ResultFood newFoodList={todayFod}/>
+          <ResultFood newFoodList={todayFod} />
         </div>
 
       </div>

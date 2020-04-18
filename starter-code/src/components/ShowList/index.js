@@ -5,7 +5,6 @@ import "./style.css";
 class ShowList extends Component {
     render(){
         const { list ,filter, addFoodList } = this.props;
-        console.log(list)
         return (
             <div className="listFoods">
              {list.filter((item) => item.name.includes(filter)).map( 
